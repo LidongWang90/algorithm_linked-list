@@ -1,3 +1,4 @@
+# 没搞明白。需要继续！
 class Node:
     def __init__(self, value):
         self.value = value
@@ -5,16 +6,13 @@ class Node:
 
 
 def reverse_linked_list(head):
-    prev = None
-    curr = head
-    # the below line can be implemented or not
-    # next = None
-    while curr:
-        next = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next
-    return prev
+    if head is None or head.next is None:
+        return head
+
+    new_head = reverse_linked_list(head.next)
+    head.next.next = head
+    head.next = None
+    return new_head
 
 
 # create linked list
@@ -23,7 +21,7 @@ head.next = Node(2)
 head.next.next = Node(3)
 head.next.next.next = Node(4)
 
-# reverse linked list
+# reverse linked list recursively
 new_head = reverse_linked_list(head)
 
 # print reversed linked list
