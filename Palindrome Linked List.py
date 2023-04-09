@@ -51,3 +51,28 @@ class Solution:
                 return False
             curr = curr.next
         return True
+
+# method 3:
+
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        # double pointers to find the middle point:
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        # reverse the right half of list:
+        prev, curr = None, slow
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = slow
+            slow = next
+        # compare
+        while prev:
+            if head.val != prev.val:
+                return False
+            head = head.next
+            prev = prev.next
+        return True
