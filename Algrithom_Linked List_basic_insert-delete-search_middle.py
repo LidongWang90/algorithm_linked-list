@@ -11,7 +11,7 @@ class ListNode(object):
         dummy = ListNode(float('-inf'))
         dummy.next = head
         curr_node = dummy
-        while curr_node.next and curr_node.next <= val:
+        while curr_node.next and curr_node.next.val <= val:
             curr_node = curr_node.next
         new_node = ListNode(val)
         new_node.next = curr_node.next
